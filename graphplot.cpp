@@ -53,7 +53,12 @@ void GraphPlot::stop()
     emit stopSignal();
     buildGraph(&data);
     thread = nullptr;
-    delete obj;
+
+    if(obj)
+    {
+        delete obj;
+        obj = nullptr;
+    }
 }
 
 void GraphPlot::buildGraph(MixedSimple2DGraph::Data *_data)
